@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mosip-check
+spec:
+  schedule: "*/1 * * * *" # minute  hour  day  day-of-month  month  day-of-week 
+  jobTemplate: 
+    spec: 
+      template: 
+        spec: 
+          containers:
+          - name: mosip-check
+            imagePullPolicy: Always
+            image: akshathkaushal7/mosip-check:latest
+            args:
+                - /bin/sh
+                - -c
+                - ./ticket.sh; exit 0;
+          serviceAccountName: mosip-check-role
+          restartPolicy: Never
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: mosip-check-role
+subjects:
+- kind: ServiceAccount
+  name: mosip-check-role
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mosip-check-role
