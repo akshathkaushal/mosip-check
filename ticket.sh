@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Following are the readiness, liveness, and startup probes present in the deployments in the cluster:"
+echo "==> Following are the readiness, liveness, and startup probes present in the deployments in the cluster:"
 echo ""
 
 # part 1
@@ -33,7 +33,7 @@ echo ""
 #images_array=$(kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n')
 images_array=$(kubectl get deployments --all-namespaces -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n')
 
-echo "Following are the images deployed in the cluster:"
+echo "==> Following are the images deployed in the cluster:"
 echo ""
 
 for image in $images_array

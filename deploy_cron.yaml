@@ -17,7 +17,7 @@ spec:
                 - -c
                 - ./ticket.sh; exit 0;
           serviceAccountName: mosip-check-role
-          restartPolicy: Never
+          restartPolicy: OnFailure
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
