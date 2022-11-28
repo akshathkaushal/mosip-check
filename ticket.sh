@@ -47,6 +47,9 @@ done
 # apt-get update
 # apt-get install jq
 
+## method 1:
+## pull every images from dockerhub and inspect it for labels
+
 # for image in $images_array
 # do
 #     echo "$image"
@@ -55,3 +58,8 @@ done
 #     docker rmi $image
 #     echo ""
 # done
+
+## method 2:
+## use the built API for fetching image labels
+
+## API not provided
