@@ -4,6 +4,7 @@ metadata:
   name: mosip-check
 spec:
   schedule: "*/1 * * * *" # minute  hour  day  day-of-month  month  day-of-week 
+  # schedule: "* * * * *"
   jobTemplate: 
     spec: 
       template: 
@@ -11,7 +12,7 @@ spec:
           containers:
           - name: mosip-check
             imagePullPolicy: Always
-            image: akshathkaushal7/mosip-check:latest
+            image: akshathkaushal/mosip-check:v1
             args:
                 - /bin/sh
                 - -c

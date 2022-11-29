@@ -6,6 +6,5 @@ RUN apt update && \
       curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && \
       chmod +x ./kubectl && \
       mv ./kubectl /usr/local/bin/kubectl
+RUN apt-get install -y jq
 COPY ./ticket.sh .
-RUN pwd
-RUN ls -a
