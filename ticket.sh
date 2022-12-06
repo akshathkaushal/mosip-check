@@ -53,6 +53,7 @@ do
 
     echo $image
 
+    ## docker v2 API
     ref="${1:-$image}"
     repo="${ref%:*}"
     tag="${ref##*:}"
